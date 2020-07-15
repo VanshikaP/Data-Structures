@@ -10,9 +10,10 @@ class ListNode:
     
     def delete(self):
         val = self.value
-        self.prev = None
-        self.next = None
-        self.value = None
+        if self.prev:
+            self.prev.next = self.next
+        if self.next:
+            self.next.prev = self.prev
         return val
 
 """
