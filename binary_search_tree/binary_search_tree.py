@@ -1,3 +1,6 @@
+import sys
+sys.path.append('../queue')
+from queue import Queue
 """
 Binary search trees are a data structure that enforce an ordering over 
 the data they store. That ordering in turn makes it a lot more efficient 
@@ -55,8 +58,6 @@ class BSTNode:
     # Call the function `fn` on the value of each node
     def for_each(self, fn):
         fn(self.value)
-        if (self.left is None) and (self.right is None):
-            return
         if self.left is not None:
             self.left.for_each(fn)
         if self.right is not None:
@@ -78,12 +79,34 @@ class BSTNode:
     # Print the value of every node, starting with the given node,
     # in an iterative breadth first traversal
     def bft_print(self, node):
+        # use a queue
+        # nodes = Queue()
+        # # start node with root node
+
+        # currentNode = node
+        # # while loop that checks
+        # while currentNode is not None:
+        #     currentNode = node.left
+            
+        #     nodes.enqueue(currentNode)
+        #     nodes.enqueue(currentNode)
+
+        # size of the loop
+            # pointer variable
+            # that updates at beginning of each loop
         pass
 
     # Print the value of every node, starting with the given node,
     # in an iterative depth first traversal
     def dft_print(self, node):
-        node.for_each(print)
+        pass
+        # node.for_each(print)
+
+        # use a stack
+        # start stack at root node
+
+        # while loop that checks stack size
+            # pointer variable and update it
         
 
     # Stretch Goals -------------------------
@@ -91,8 +114,16 @@ class BSTNode:
 
     # Print Pre-order recursive DFT
     def pre_order_dft(self, node):
-        pass
+        print(node.value)
+        if node.left is not None:
+            self.pre_order_dft(node.left)
+        if node.right is not None:
+            self.pre_order_dft(node.right)
 
     # Print Post-order recursive DFT
     def post_order_dft(self, node):
-        pass
+        if node.left is not None:
+            self.post_order_dft(node.left)
+        if node.right is not None:
+            self.post_order_dft(node.right)
+        print(node.value)
